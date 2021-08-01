@@ -4,6 +4,7 @@ from fastapi.responses import JSONResponse
 from starlette.middleware.cors import CORSMiddleware
 from starlette.middleware import Middleware
 import pandas as pd
+import os
 
 from custom_errors import URLNotFoundError
 from models import URLData
@@ -14,6 +15,7 @@ CHARACTERS = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 NUM_CHARACTERS = 6
 COLUMNS = ["index", "shortenedURL", "fullURL"]
 DTYPES = {"index": "int64", "shortenedURL": "str", "fullURL": "str"}
+CSV_FOLDER_PATH = "../data"
 CSV_PATH = "../data/urls.csv"
 
 app = FastAPI()
@@ -46,6 +48,8 @@ def getShortenedURL(urlData: URLData):
 		lastLine = df.tail(1)
 		x = int(lastLine["index"]) + 1
 	except FileNotFoundError:
+		if not os.path.exists(CSV_FOLDER_PATH):
+			os.makedirs(CSV_FOLDER_PATH)
 		df = pd.DataFrame(columns = COLUMNS)
 		df.astype(DTYPES).dtypes
 		x = 0
