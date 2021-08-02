@@ -1,6 +1,7 @@
 import React from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom";
 
 class Home extends React.Component {
@@ -71,9 +72,22 @@ class Home extends React.Component {
 						Shorten!
 					</Button>
 				</Form>
-				<Link to={this.state.shortenedURL !== "" ? `go/${this.state.shortenedURL}` : "#"}>
-					{this.state.shortenedURL !== "" ? `go/${this.state.shortenedURL}` : ""}
-				</Link>
+				<br />
+				{this.state.shortenedURL !== "" ?
+					<Card>
+						<Card.Header>Here is your shortened link!</Card.Header>
+						<Card.Body>
+							<Card.Text>
+								<Link to={`go/${this.state.shortenedURL}`}>
+									{`go/${this.state.shortenedURL}`}
+								</Link>
+							</Card.Text>
+						</Card.Body>
+					</Card>
+				:
+					<></>
+				}
+
 			</>
     );
   }

@@ -1,6 +1,7 @@
 import React from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom";
 
 class Go extends React.Component {
@@ -85,9 +86,21 @@ class Go extends React.Component {
 						Get Full Link!
 					</Button>
 				</Form>
-				<Link to={{ pathname: this.state.fullURL.startsWith("http://") || this.state.fullURL.startsWith("https://") ? this.state.fullURL : `//${this.state.fullURL}` }} target="_blank">
-					{this.state.fullURL}
-				</Link>
+				<br />
+				{this.state.fullURL !== "" ?
+					<Card>
+						<Card.Header>Here is your full link!</Card.Header>
+						<Card.Body>
+							<Card.Text>
+								<Link to={{ pathname: this.state.fullURL.startsWith("http://") || this.state.fullURL.startsWith("https://") ? this.state.fullURL : `//${this.state.fullURL}` }} target="_blank">
+									{this.state.fullURL}
+								</Link>
+							</Card.Text>
+						</Card.Body>
+					</Card>
+				:
+					<></>
+				}
 			</>
     );
   }
