@@ -1,5 +1,6 @@
 import React from "react";
 import Form from 'react-bootstrap/Form';
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom";
@@ -79,8 +80,9 @@ class Go extends React.Component {
 				<h2>Get Link</h2>
 				<Form>
 					<Form.Group className="mb-3">
-						<Form.Label>Link to Retrieve: </Form.Label>
-						<Form.Control type="url" onChange={this.onInput} value={this.state.url} placeholder="Enter link.." />
+					<FloatingLabel controlId="floatURL" label="Link to Retrieve">
+						<Form.Control type="url" onChange={this.onInput} value={this.state.url} placeholder="Enter link to retrieve.." />
+					</FloatingLabel>
 					</Form.Group>
 					<Button variant="primary" type="button" onClick={this.handleSubmit}>
 						Get Full Link!
