@@ -2,7 +2,7 @@ import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavigationBar from "./components/NavigationBar.js";
 import Home from "./components/Home.js";
-import GetLink from "./components/GetLink.js";
+import Go from "./components/Go.js";
 import {
 	BrowserRouter as Router,
 	Switch,
@@ -16,10 +16,7 @@ export default function App() {
 				<NavigationBar />
 				<Switch>
 					<Route path="/go">
-						<GetLink />
-					</Route>
-					<Route path="/getlink">
-						<GetLink />
+						<Go />
 					</Route>
 					<Route path="/">
 						<Home />

@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { Link } from "react-router-dom";
 
-class GetLink extends React.Component {
+class Go extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -50,6 +50,18 @@ class GetLink extends React.Component {
 			});
 	}
 
+	componentDidMount() {
+		var url = window.location.pathname;
+		if (!url.endsWith("go") && url.startsWith("/go/")) {
+			this.setState({
+				url: url.replace("/go/", '')
+			},
+			() => {
+				this.handleSubmit(null);
+			});
+		}
+	}
+
   render() {
     return (
       <>
@@ -57,7 +69,7 @@ class GetLink extends React.Component {
 				<Form>
 					<Form.Group className="mb-3">
 						<Form.Label>Link to Retrieve: </Form.Label>
-						<Form.Control type="url" onChange={this.onInput} placeholder="Enter link.." />
+						<Form.Control type="url" onChange={this.onInput} value={this.state.url} placeholder="Enter link.." />
 					</Form.Group>
 					<Button variant="primary" type="button" onClick={this.handleSubmit}>
 						Get Full Link!
@@ -71,4 +83,4 @@ class GetLink extends React.Component {
   }
 }
 
-export default GetLink;
+export default Go;
