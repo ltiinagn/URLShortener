@@ -10,7 +10,11 @@
 ## Frontend
 - Created with ReactJS
 ### Running frontend
-- Navigate into folder `frontend` and run command (NodeJS has to be installed)
+- Only on first run, navigate into folder `frontend` and run command (NodeJS has to be installed)
+```
+npm install
+```
+- If not already, navigate into folder `frontend` and run command
 ```
 npm start
 ```
@@ -23,7 +27,7 @@ npm start
 - v0.1 (old) uses pandas to store the table of full URLs and shortened URLs, i.e., no database
   - Commented out in code for reference
 ### Running backend
-- Navgiate into folder `backend` and run command to install Python libraries (ideally in a virtual environment (venv))
+- Only on first run, navgiate into folder `backend` and run command to install Python libraries (ideally in a virtual environment (venv))
 ```
 pip install -r requirements.txt
 ```
