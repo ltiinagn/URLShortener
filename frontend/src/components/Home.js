@@ -21,36 +21,41 @@ class Home extends React.Component {
 	}
 
 	handleSubmit(e) {
-		var headers = {
-			"Content-Type": "application/json"
-		};
-		const requestOptions = {
-			mode: 'cors',
-			method: 'POST',
-			headers: headers,
-			body: JSON.stringify({
-        url: this.state.url
-      })
-		};
-		var url = new URL(`http://127.0.0.1:8000/shorten/`)
-		fetch(url, requestOptions)
-			.then(async response => {
-				const data = await response.json();
-				if (response.ok) {
-					this.setState({
-						shortenedURL: data.shortenedURL
-					})
-				}
-				else { // check for error response
-					// get error message from body or default to response status
-					const error = (data && data.message) || response.status;
-					return Promise.reject(error);
-				}
-			})
-			.catch(error => {
-				console.error('There was an error!', error);
-				alert(`Error: Unable to get response from backend..`)
-			});
+		if (this.state.url !== "") {
+			var headers = {
+				"Content-Type": "application/json"
+			};
+			const requestOptions = {
+				mode: 'cors',
+				method: 'POST',
+				headers: headers,
+				body: JSON.stringify({
+					url: this.state.url
+				})
+			};
+			var url = new URL(`http://127.0.0.1:8000/shorten/`)
+			fetch(url, requestOptions)
+				.then(async response => {
+					const data = await response.json();
+					if (response.ok) {
+						this.setState({
+							shortenedURL: data.shortenedURL
+						})
+					}
+					else { // check for error response
+						// get error message from body or default to response status
+						const error = (data && data.message) || response.status;
+						return Promise.reject(error);
+					}
+				})
+				.catch(error => {
+					console.error('There was an error!', error);
+					alert(`Error: Unable to get response from backend..`)
+				});
+		}
+		else {
+			alert("Please enter a URL!");
+		}
 	}
 
   render() {
