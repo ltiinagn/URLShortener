@@ -21,20 +21,3 @@ def addEntry(con, cur, idx, shortenedURL, fullURL):
 
 def getLastIndex(cur):
 	return cur.execute("SELECT MAX(idx) from urlShortener").fetchone()[0]
-
-# cur = con.cursor()
-
-# cur.execute('''CREATE TABLE urlShortener
-#   (idx text, shortenedURL text, fullURL text)''')
-
-# cur.execute("INSERT INTO urlShortener VALUES (1,'000000','www.google.com')")
-
-# # Save (commit) the changes
-# con.commit()
-
-# for row in cur.execute("SELECT * FROM urlShortener WHERE shortenedURL == '000000'"):
-#   print(row)
-
-# # We can also close the connection if we are done with it.
-# # Just be sure any changes have been committed or they will be lost.
-# con.close()
