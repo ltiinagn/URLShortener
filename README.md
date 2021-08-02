@@ -16,7 +16,10 @@ npm start
 ## Backend
 - Created with Python
 - Created using FastAPI
-- v0.1 uses pandas to store the map of full URLs and shortened URLs, i.e., no database
+- v0.2 uses sqlite3 to store the table of full URLs and shortened URLs
+  - SQLite was used over MySQL for ease of setting up (all written in code, no additional step required to run)
+- v0.1 (old) uses pandas to store the table of full URLs and shortened URLs, i.e., no database
+  - Commented out in code for reference
 ### Running backend
 - Navgiate into folder `backend` and run command to install Python libraries (ideally in a virtual environment (venv))
 ```
