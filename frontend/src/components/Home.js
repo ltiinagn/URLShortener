@@ -64,10 +64,10 @@ class Home extends React.Component {
     return (
       <>
 				<h2>Home</h2>
-				<Form>
+				<Form bg="dark" variant="dark" >
 					<Form.Group className="mb-3">
 						<FloatingLabel controlId="floatURL" label="Link to Shorten">
-							<Form.Control type="url" onChange={this.onInput} value={this.state.url} placeholder="Enter link to shorten.." />
+							<Form.Control type="url" onChange={this.onInput} value={this.state.url} />
 						</FloatingLabel>
 					</Form.Group>
 					<Button variant="primary" type="button" onClick={this.handleSubmit}>
@@ -76,7 +76,7 @@ class Home extends React.Component {
 				</Form>
 				<br />
 				{this.state.shortenedURL !== "" ?
-					<Card>
+					<Card bg="success" text="white">
 						<Card.Header>Here is your shortened link!</Card.Header>
 						<Card.Body>
 							<Card.Text>

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 export default function NavigationBar() {
 	return (
-		<Navbar bg="light" expand="lg">
+		<Navbar bg="dark" variant="dark" expand="lg">
 			<Container>
 				<Navbar.Brand href="#home">URL Shortener</Navbar.Brand>
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />

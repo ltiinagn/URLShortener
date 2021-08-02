@@ -81,7 +81,7 @@ class Go extends React.Component {
 				<Form>
 					<Form.Group className="mb-3">
 					<FloatingLabel controlId="floatURL" label="Link to Retrieve">
-						<Form.Control type="url" onChange={this.onInput} value={this.state.url} placeholder="Enter link to retrieve.." />
+						<Form.Control type="url" onChange={this.onInput} value={this.state.url} />
 					</FloatingLabel>
 					</Form.Group>
 					<Button variant="primary" type="button" onClick={this.handleSubmit}>
@@ -90,7 +90,7 @@ class Go extends React.Component {
 				</Form>
 				<br />
 				{this.state.fullURL !== "" ?
-					<Card>
+					<Card bg="success" text="white">
 						<Card.Header>Here is your full link!</Card.Header>
 						<Card.Body>
 							<Card.Text>
