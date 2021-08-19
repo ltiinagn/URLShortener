@@ -11,10 +11,11 @@ from models import URLData
 
 import sys
 sys.path.append("./../..")
-from database.app.main import connect, findEntry, addEntry, getLastIndex
+from database.app.main import connect, findEntry, addEntry, getLastIndex, updateEntryCount
 
 CHARACTERS = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 NUM_CHARACTERS = 6
+VALID_TIMES = 5
 # # CSV way
 # COLUMNS = ["index", "shortenedURL", "fullURL"]
 # DTYPES = {"index": "int64", "shortenedURL": "str", "fullURL": "str"}
@@ -43,7 +44,11 @@ def computeShortenedURL(x):
 def getFullURL(url: str):
 	res = findEntry(cur, "shortenedURL", url)
 	if res:
-		return JSONResponse(content={"fullURL": res[2]})
+		times = res[3] + 1
+		# if resUpdate.rowcount == 1:
+		if times <= VALID_TIMES:
+			resUpdate = updateEntryCount(con, cur, "times", times, "shortenedURL", url)
+			return JSONResponse(content={"fullURL": res[2]})
 	else:
 		return JSONResponse(content={"fullURL": ""})
 
