@@ -1,6 +1,5 @@
 # URLShortener
 
-- Sorry I do not have time to come up with a better version especially the frontend because I am in the last few weeks of school (dated 02/08/2021)
 - This URL shortener allows users to enter a full URL to obtain a shortened URL, vice versa.
   - In retrieving the full URL from the shortened URL, the full URL will first be displayed, which can be clicked by the user after the user has verified the full URL.
 - The shortener works by mapping the full URL to a string of alphanumeric characters (A-Z, a-z, 0-9 for a total of 62 characters) of length 6.
